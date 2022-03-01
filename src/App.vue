@@ -15,7 +15,7 @@ export default {
   <img alt="Vue logo" src="./assets/logo.png" />
   <br>
   <TheNavigation/>
-  <router-view></router-view>
+  <router-view :key="$route.path"></router-view>
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 

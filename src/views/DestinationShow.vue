@@ -11,6 +11,9 @@
 
 <script>
 export default {
+    props: {
+        id: { type: String, required: true }
+    },
     data() {
         return {
             destination: null
@@ -18,7 +21,7 @@ export default {
     },
     async created() {
         // fetch something async...
-        this.destination = this.$route.params.id;
+        this.destination = this.id;
     }
 }
 </script>

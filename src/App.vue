@@ -6,6 +6,11 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
+  <br>
+  <router-link to="/">Home</router-link>
+  <span> | </span>
+  <router-link to="/about">About</router-link>
+  <router-view></router-view>
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 

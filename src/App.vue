@@ -6,7 +6,8 @@ import TheNavigation from './components/TheNavigation.vue';
 
 export default {
   components: {
-    TheNavigation: TheNavigation
+    TheNavigation,
+    HelloWorld
   }
 }
 </script>

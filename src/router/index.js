@@ -30,7 +30,12 @@ const routes = [
 
 const router = createRouter({
     history: createWebHistory(),
-    routes: routes
+    routes: routes,
+    scrollBehavior(to, from, savedPosition) {
+        return savedPosition || new Promise((resolve) => {
+            setTimeout(() => resolve({ top: 0, behavior: 'smooth' }), 300);
+        });
+    }
 });
 
 export default router;

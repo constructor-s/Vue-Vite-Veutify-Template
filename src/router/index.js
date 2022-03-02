@@ -6,10 +6,23 @@ const routes = [
     { path: '/', name: 'Home', component: Home },
     { path: '/about', name: 'About', component: About },
     {
+        path: '/protected',
+        name: 'protected',
+        component: () => import("../views/Protected.vue"),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import("../views/Login.vue")
+    },
+    {
         path: '/destination/:id', name: 'destination.show', component: () => import('../views/DestinationShow.vue'), props: true,
         beforeEnter(to, from) {
             if (!["Earth", "Moon", "Mars"].includes(to.params.id)) {
-                return { 
+                return {
                     name: 'NotFound',
                     // allows keeping the URL while rendering a different page
                     params: { pathMatch: to.path.split("/").slice(1) },
@@ -37,5 +50,12 @@ const router = createRouter({
         });
     }
 });
+
+router.beforeEach((to, from) => {
+    if (to.meta.requiresAuth && !localStorage.getItem("username")) {
+        // need to login if not already logged in
+        return { name: 'login' };
+    }
+})
 
 export default router;

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <GoBack />
         <h2>Hello Destionation: {{destination}}</h2>
         <router-view/> <!-- nested inside -->
         <div class="destinations">
@@ -11,7 +12,10 @@
 </template>
 
 <script>
+import GoBack from "../components/GoBack.vue";
+
 export default {
+    components: { GoBack },
     props: {
         id: { type: String, required: true }
     },

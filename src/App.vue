@@ -16,7 +16,13 @@ export default {
   <img alt="Vue logo" src="./assets/logo.png" />
   <br>
   <TheNavigation/>
-  <router-view :key="$route.path"></router-view>
+  <div class="container">
+    <router-view v-slot="{Component}">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" :key="$route.path"></component>
+      </transition>
+    </router-view>
+  </div>
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 
@@ -28,5 +34,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
